@@ -2,7 +2,7 @@ namespace PasswordHasher
 {
     public partial class MainForm : Form
     {
-        private const int maxPasswordLenght = 15;
+        private const int minPasswordLenght = 15;
 
         public Dictionary<string, (string hash, string salt)> MockDatabse = new Dictionary<string, (string, string)>();
 
@@ -57,9 +57,9 @@ namespace PasswordHasher
                 return;
             }
 
-            if (password.Length > maxPasswordLenght)
+            if (password.Length < minPasswordLenght)
             {
-                MessageBox.Show($"Максимальная длина пароля - {maxPasswordLenght}",
+                MessageBox.Show($"Минимальная длина пароля - {minPasswordLenght}",
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
